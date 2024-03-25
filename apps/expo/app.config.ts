@@ -50,11 +50,7 @@ const defineConfig = (): ExpoConfig => ({
   //     projectId: "your-project-id",
   //   },
   // },
-  plugins: [
-    "expo-router",
-    "expo-secure-store",
-    "expo-apple-authentication",
-  ],
+  plugins: ["expo-router", "expo-secure-store", "expo-apple-authentication"],
 });
 
 export default defineConfig;

@@ -16,9 +16,11 @@
   "dependencies": {
     "@acme/db": "workspace:^0.1.0",
     "@acme/validators": "workspace:^0.1.0",
+    "@anthropic-ai/sdk": "^0.19.0",
     "@supabase/supabase-js": "^2.39.7",
     "@trpc/server": "11.0.0-next-beta.264",
     "nanoid": "^5.0.6",
+    "openai": "^4.29.2",
     "superjson": "2.2.1",
     "zod": "^3.22.4"
   },

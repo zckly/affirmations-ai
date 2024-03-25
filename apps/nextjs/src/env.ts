@@ -5,6 +5,8 @@ export const env = createEnv({
   shared: {
     NODE_ENV: z.enum(["development", "test", "production"]),
     VERCEL_ENV: z.enum(["development", "preview", "production"]).optional(),
+    NEXT_PUBLIC_SUPABASE_URL: z.string().min(1),
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
   },
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app isn't
@@ -12,6 +14,8 @@ export const env = createEnv({
    */
   server: {
     POSTGRES_URL: z.string().min(1),
+    OPENAI_API_KEY: z.string().min(1),
+    SUPABASE_SERVICE_ROLE: z.string().min(1),
   },
   /**
    * Specify your client-side environment variables schema here.
@@ -27,7 +31,6 @@ export const env = createEnv({
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     VERCEL_ENV: process.env.VERCEL_ENV,
-    POSTGRES_URL: process.env.POSTGRES_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },

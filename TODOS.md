@@ -1,0 +1,4 @@
+- [ ] edit audio to remove silence in the beginning
+- [ ] add more few-shot prompts
+- [ ] add buy me a coffee button
+- [ ] deploy

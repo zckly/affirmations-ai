@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 
 import { cn } from "@acme/ui";
-import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
+import { ThemeProvider } from "@acme/ui/theme";
 import { Toaster } from "@acme/ui/toast";
 
 import { env } from "~/env";
@@ -17,18 +15,18 @@ export const metadata: Metadata = {
       ? "https://turbo.t3.gg"
       : "http://localhost:3000",
   ),
-  title: "T3 Turbo x Supabase",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: "Affirmations AI",
+  description: "Affirmations made with AI",
   openGraph: {
-    title: "T3 Turbo x Supabase",
-    description: "Simple monorepo with shared backend for web & mobile apps",
+    title: "Affirmations AI",
+    description: "Affirmations made with AI",
     url: "https://github.com/supabase-community/create-t3-turbo",
-    siteName: "T3 Turbo x Supabase",
+    siteName: "Affirmations AI",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
+    site: "@wenquai",
+    creator: "@wenquai",
   },
 };
 
@@ -43,17 +41,10 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          "min-h-screen bg-background font-sans text-foreground antialiased",
-          GeistSans.variable,
-          GeistMono.variable,
-        )}
+        className={cn("min-h-screen bg-background text-foreground antialiased")}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light">
           <TRPCReactProvider>{props.children}</TRPCReactProvider>
-          <div className="absolute bottom-4 right-4">
-            <ThemeToggle />
-          </div>
           <Toaster />
         </ThemeProvider>
       </body>
