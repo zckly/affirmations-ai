@@ -48,7 +48,6 @@ ${role}
   const message = await anthropic.messages.create({
     max_tokens: 1200,
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.8,
     model: "claude-3-opus-20240229",
     stop_sequences: ["</output>"],
   });
