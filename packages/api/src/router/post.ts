@@ -37,7 +37,7 @@ export const postRouter = createTRPCRouter({
       });
       // change to speech
       const response = await fetch(
-        `${process.env.VERCEL_URL ?? "http://localhost:3000"}/api/speech`,
+        `${process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://affirmations-ai.vercel.app"}/api/speech`,
         {
           method: "POST",
           body: JSON.stringify({ lines: affirmations }),

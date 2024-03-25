@@ -216,7 +216,7 @@ export function PostCard(props: {
   const { post } = props;
 
   return (
-    <div className="flex cursor-pointer flex-row rounded-lg border bg-white/10 p-4 transition-all hover:animate-pulse">
+    <div className="flex min-h-[200px] cursor-pointer flex-row rounded-lg border bg-white/10 p-4 transition-all hover:animate-pulse">
       <Link
         href={`/session/${post.id}`}
         className="flex w-full flex-grow flex-col items-center justify-center px-4 py-8 text-center"
