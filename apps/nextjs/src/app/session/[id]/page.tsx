@@ -209,7 +209,7 @@ export default function Post({ params }: { params: { id: string } }) {
   return (
     <div className="flex h-screen max-h-screen flex-col items-center justify-center bg-background text-foreground">
       {completed ? (
-        <div className="z-10 flex h-full flex-col items-center justify-center gap-4">
+        <div className="z-10 flex h-full flex-col items-center justify-center gap-4 p-4">
           <p className="text-lg">
             You have completed the session. You can now close the window.
           </p>
@@ -223,7 +223,7 @@ export default function Post({ params }: { params: { id: string } }) {
           </Button>
         </div>
       ) : !isPlaying ? (
-        <div className="z-10 flex h-full flex-col items-center justify-center gap-12">
+        <div className="z-10 flex h-full flex-col items-center justify-center gap-12 p-4">
           <div className="text-2xl font-bold">{data?.title}</div>
           <Button
             size="lg"
