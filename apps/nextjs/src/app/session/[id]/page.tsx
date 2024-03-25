@@ -136,8 +136,10 @@ export default function Post({ params }: { params: { id: string } }) {
         if (currentAudioFile) {
           currentAudioFileRef.current = currentAudioFile;
           console.log(`Playing audio file: ${currentAudioFile.src}`);
-          void currentAudioFile.load();
-          void currentAudioFile.play();
+          currentAudioFile.load();
+          currentAudioFile.play().catch((error) => {
+            console.error("Playback failed:", error);
+          });
           currentAudioFile.onended = () => {
             i++;
             if (i < audioFilesRef.current.length) {
