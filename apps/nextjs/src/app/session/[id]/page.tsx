@@ -244,6 +244,7 @@ export default function Post({ params }: { params: { id: string } }) {
           <div className="mx-auto max-w-full text-4xl">
             <video
               ref={videoRef}
+              playsInline
               className="fixed left-0 top-0 z-0 h-full w-full bg-black object-cover"
             />
             <div className="fixed bottom-0 left-0 right-0 z-10 bg-black bg-opacity-50 p-4 text-center text-white">
