@@ -36,16 +36,17 @@ export const postRouter = createTRPCRouter({
         role: input.title,
       });
       // change to speech
-      const response = await fetch(
-        `${process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://affirmations-ai.vercel.app"}/api/speech`,
-        {
-          method: "POST",
-          body: JSON.stringify({ lines: affirmations }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const baseUrl =
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:3000"
+          : "https://affirmations-ai.vercel.app";
+      const response = await fetch(`${baseUrl}/api/speech`, {
+        method: "POST",
+        body: JSON.stringify({ lines: affirmations }),
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+      });
 
       if (!response.ok) {
         throw new Error("Something went wrong with the speech synthesis");
