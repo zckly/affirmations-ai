@@ -102,6 +102,8 @@ export default function Post({ params }: { params: { id: string } }) {
           playAudioFiles();
         }
       });
+      // load
+      audio.load();
       audioFilesRef.current.push(audio);
     }
 
