@@ -147,18 +147,6 @@ export function CreatePostForm() {
             variant={"outline"}
             onClick={(e) => {
               e.preventDefault();
-              setTitle("High school student");
-            }}
-          >
-            High school student
-          </Button>
-          <Button
-            type="button"
-            size="sm"
-            className="text-gray-700"
-            variant={"outline"}
-            onClick={(e) => {
-              e.preventDefault();
               setTitle("Brooklyn-based creative director");
             }}
           >
