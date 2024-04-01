@@ -28,7 +28,7 @@ export function CreatePostForm() {
   return (
     <>
       <form
-        className="z-50 flex w-full max-w-xl flex-col"
+        className="z-50 flex w-full max-w-xl flex-col px-4"
         onSubmit={async (e) => {
           e.preventDefault();
           try {
