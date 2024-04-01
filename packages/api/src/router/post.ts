@@ -13,7 +13,7 @@ export const postRouter = createTRPCRouter({
     return ctx.db.query.post.findMany({
       with: { author: true },
       orderBy: desc(schema.post.createdAt),
-      limit: 30,
+      limit: 36,
     });
   }),
 
