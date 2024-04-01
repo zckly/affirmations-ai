@@ -21,14 +21,14 @@ export default function Header() {
           view on github
         </Link>
 
-        <Link
+        {/* <Link
           href="https://www.buymeacoffee.com/wenquai"
           target="_blank"
           rel="noreferrer noopener"
           className="hover:underline"
         >
           buy me a coffee
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
