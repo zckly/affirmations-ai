@@ -93,6 +93,8 @@ export default function Post({ params }: { params: { id: string } }) {
     function preloadAudio(url: string) {
       console.log(`Preloading audio file: ${url}`);
       const audio = new Audio(url);
+      // mute first
+      audio.muted = true;
       audio.addEventListener("canplaythrough", () => {
         loaded++;
         console.log(`Audio file loaded: ${url}. Total loaded: ${loaded}`);
@@ -120,23 +122,35 @@ export default function Post({ params }: { params: { id: string } }) {
 
         // Play video
         if (videoRef.current) {
-          let randomVideo;
-          do {
-            randomVideo =
-              videos[Math.floor(Math.random() * videos.length)] ??
-              "/peaceful1.mp4";
-          } while (randomVideo === videoRef.current.src);
-          console.log(`Playing video file: ${randomVideo}`);
-          // set volume of video to 0
-          videoRef.current.volume = 0;
-          videoRef.current.src = randomVideo;
-          void videoRef.current.play();
+          // Shuffle videos array
+          const shuffledVideos = videos.sort(() => Math.random() - 0.5);
+          let videoIndex = 0;
+
+          // Loop through each video
+          for (const video of shuffledVideos) {
+            if (video !== videoRef.current.src) {
+              console.log(`Playing video file: ${video}`);
+              // set volume of video to 0
+              videoRef.current.volume = 0;
+              videoRef.current.src = video;
+              void videoRef.current.play();
+              break;
+            }
+            videoIndex++;
+            // If all videos have been tried, use the default video
+            if (videoIndex === shuffledVideos.length) {
+              console.log(`Playing default video file: /peaceful1.mp4`);
+              videoRef.current.src = "/peaceful1.mp4";
+              void videoRef.current.play();
+            }
+          }
         }
         const currentAudioFile = audioFilesRef.current[i];
         if (currentAudioFile) {
           currentAudioFileRef.current = currentAudioFile;
           console.log(`Playing audio file: ${currentAudioFile.src}`);
           currentAudioFile.load();
+          currentAudioFile.muted = false;
           currentAudioFile.play().catch((error) => {
             console.error("Playback failed:", error);
           });
@@ -214,17 +228,23 @@ export default function Post({ params }: { params: { id: string } }) {
     <div className="flex h-screen max-h-screen flex-col items-center justify-center bg-background text-foreground">
       {completed ? (
         <div className="z-10 flex h-full flex-col items-center justify-center gap-4 p-4">
-          <p className="text-lg">
-            You have completed the session. You can now close the window.
-          </p>
-          <Button
-            size="lg"
-            onClickCapture={() => {
-              void startPlaying();
-            }}
-          >
-            Restart
-          </Button>
+          <p className="text-lg">You have completed the session.</p>
+          <div className="flex flex-row gap-2">
+            <Button
+              size="lg"
+              onClickCapture={() => {
+                void startPlaying();
+              }}
+            >
+              Play again
+            </Button>
+            <Link
+              href="/"
+              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+            >
+              Create another
+            </Link>
+          </div>
         </div>
       ) : !isPlaying ? (
         <div className="z-10 flex h-full flex-col items-center justify-center gap-12 p-4">

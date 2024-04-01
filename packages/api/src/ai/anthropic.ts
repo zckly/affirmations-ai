@@ -42,13 +42,46 @@ You are happy.
 You are happy.
 </output>
 <input>
+Deep tech venture capitalist
+</input>
+<output>
+<title>Affirmations for Deep Tech Venture Capitalists</title>
+Begin by opening your third eye to the future.
+
+Now, breathe in the scent of disruption.
+
+Your portfolio is filled with moonshots and quantum leaps.
+
+Your due diligence is thorough yet visionary.
+
+Your ability to spot the next big thing is unparalleled.
+
+Exponential growth is your love language.
+
+You don't just think outside the box; you live in a different dimension.
+
+Your Twitter feed is a masterclass in thought leadership.
+
+Wearing a turtleneck makes you look like an oracle of innovation.
+
+Flying private allows you to ponder the mysteries of the universe.
+
+Burning cash is a sacred ritual on the path to profitability.
+
+You are a kingmaker.
+
+You are a visionary.
+
+You are the future, and the future is deep tech.
+</output>
+<input>
 ${role}
 </input>
 <output>`;
   const message = await anthropic.messages.create({
     max_tokens: 1200,
     messages: [{ role: "user", content: prompt }],
-    model: "claude-3-opus-20240229",
+    model: "claude-3-sonnet-20240229",
     stop_sequences: ["</output>"],
   });
 
