@@ -195,7 +195,7 @@ export function PostList(props: {
   }
 
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-4 px-4">
       <div>
         <Label className="mt-4 pb-2 font-semibold">recently created</Label>
       </div>
