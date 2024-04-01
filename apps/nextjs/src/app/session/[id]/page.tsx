@@ -93,6 +93,8 @@ export default function Post({ params }: { params: { id: string } }) {
     function preloadAudio(url: string) {
       console.log(`Preloading audio file: ${url}`);
       const audio = new Audio(url);
+      // mute first
+      audio.muted = true;
       audio.addEventListener("canplaythrough", () => {
         loaded++;
         console.log(`Audio file loaded: ${url}. Total loaded: ${loaded}`);
@@ -148,6 +150,7 @@ export default function Post({ params }: { params: { id: string } }) {
           currentAudioFileRef.current = currentAudioFile;
           console.log(`Playing audio file: ${currentAudioFile.src}`);
           currentAudioFile.load();
+          currentAudioFile.muted = false;
           currentAudioFile.play().catch((error) => {
             console.error("Playback failed:", error);
           });
