@@ -75,7 +75,7 @@ export default function Post({ params }: { params: { id: string } }) {
     });
 
     // 4 seconds of silence before starting the speech
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     const lines = data?.content.split("\n") ?? [];
     const paths = data?.audioPaths.split("\n") ?? [];
