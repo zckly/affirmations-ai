@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import type { RouterOutputs } from "@acme/api";
+import { toast } from "@acme/ui/toast";
 
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
@@ -33,13 +34,21 @@ export function CreatePostForm() {
           e.preventDefault();
           try {
             setIsLoading(true);
-            const newPostId = await createPost({
-              title,
-              content,
-            });
-            setTitle("");
-            setContent("");
-            router.push(`/session/${newPostId}`);
+            try {
+              const newPostId = await createPost({
+                title,
+                content,
+              });
+              setTitle("");
+              setContent("");
+              router.push(`/session/${newPostId}`);
+            } catch (e) {
+              console.log(e);
+              setIsLoading(false);
+              toast.error(
+                "Something went wrong while creating your affirmation. Please try a different prompt.",
+              );
+            }
 
             await utils.post.all.invalidate();
           } catch (e) {
