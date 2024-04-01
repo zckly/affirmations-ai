@@ -22,7 +22,11 @@ export default function Dashboard({
         </h1>
         <h3 className="mb-16 text-lg font-medium ">
           generate your perfect affirmation using AI
+          <div className="block text-center text-sm text-gray-700 md:hidden">
+            Please use on your computer for the best experience
+          </div>
         </h3>
+
         <CreatePostForm />
 
         <div className="mt-36 w-full max-w-7xl">
