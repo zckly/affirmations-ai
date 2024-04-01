@@ -31,10 +31,12 @@ export const postRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       // Get role from input and generate an affirmation
 
-      console.log(input.title);
       const { title, affirmations } = await generateAffirmation({
         role: input.title,
       });
+      if (!title || !affirmations) {
+        return "";
+      }
       // change to speech
       const baseUrl =
         process.env.NODE_ENV === "development"

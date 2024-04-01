@@ -39,6 +39,13 @@ export function CreatePostForm() {
                 title,
                 content,
               });
+              if (!newPostId) {
+                setIsLoading(false);
+                toast.error(
+                  "Something went wrong while creating your affirmation. Please try a different prompt.",
+                );
+                return;
+              }
               setTitle("");
               setContent("");
               router.push(`/session/${newPostId}`);
