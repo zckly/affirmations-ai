@@ -48,7 +48,7 @@ export function CreatePostForm() {
         }}
       >
         <Label htmlFor="role" className="pb-2 font-semibold">
-          What you do
+          What do you do?
         </Label>
         <div className="flex w-full flex-row gap-2">
           <input
@@ -66,6 +66,11 @@ export function CreatePostForm() {
             {isLoading ? "..." : "=>"}
           </Button>
         </div>
+        {isLoading && (
+          <div className="w-full text-center">
+            loading...please wait up to 30 seconds
+          </div>
+        )}
         <Label className="mt-4 pb-2 font-semibold">Examples</Label>
         <div className="flex w-full flex-row flex-wrap gap-2">
           <Button
@@ -190,10 +195,15 @@ export function PostList(props: {
   }
 
   return (
-    <div className="grid w-full gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {posts.map((p) => {
-        return <PostCard key={p.id} post={p} />;
-      })}
+    <div className="flex flex-col gap-y-4">
+      <div>
+        <Label className="mt-4 pb-2 font-semibold">recently created</Label>
+      </div>
+      <div className="mb-12 grid w-full gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {posts.map((p) => {
+          return <PostCard key={p.id} post={p} />;
+        })}
+      </div>
     </div>
   );
 }
