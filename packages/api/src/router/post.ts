@@ -12,8 +12,8 @@ export const postRouter = createTRPCRouter({
   all: publicProcedure.query(({ ctx }) => {
     return ctx.db.query.post.findMany({
       with: { author: true },
-      orderBy: desc(schema.post.id),
-      limit: 10,
+      orderBy: desc(schema.post.createdAt),
+      limit: 30,
     });
   }),
 
